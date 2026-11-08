@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Science Mock Test - 16 | Bengal Educational News</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            color: #333;
+            min-height: 100vh;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        header {
+            text-align: center;
+            border-bottom: 3px solid #0056b3;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        header h1 {
+            color: #0056b3;
+            margin: 0;
+            font-size: 24px;
+        }
+        header p {
+            color: #555;
+            font-weight: bold;
+            margin: 5px 0 0 0;
+        }
+        .exam-date {
+            background: #e2e8f0;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            color: #333;
+            margin-top: 8px;
+            font-weight: bold;
+        }
+        .contact-highlight {
+            display: inline-block;
+            background: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .contact-highlight span {
+            color: #d9534f;
+        }
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .nav-btn {
+            padding: 10px 25px;
+            background-color: #eef2f7;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+        .nav-btn.active {
+            background-color: #0056b3;
+            color: white;
+            border-color: #0056b3;
+        }
+        .portal-section {
+            display: none;
+        }
+        .portal-section.active {
+            display: block;
+        }
+        .reg-card {
+            background: #fdfefe;
+            padding: 25px;
+            border: 1px solid #dcdcdc;
+            border-radius: 8px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #444;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+        .start-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+            transition: 0.3s;
+        }
+        .start-btn:hover {
+            background-color: #218838;
+        }
+        #quizBox {
+            display: none;
+        }
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            background: #e9ecef;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .timer {
+            color: #dc3545;
+        }
+        .question-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #222;
+            margin-bottom: 15px;
+        }
+        .options-list {
+            list-style: none;
+            padding: 0;
+        }
+        .options-list li {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .options-list li:hover {
+            background: #e2e6ea;
+            border-color: #0056b3;
+        }
+        .options-list li.selected {
+            background: #d1ecf1;
+            border-color: #bee5eb;
+            font-weight: bold;
+        }
+        .next-btn {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            float: right;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+        .next-btn:hover {
+            background-color: #004085;
+        }
+        .msg-box {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 25px;
+            border: 1px solid #c3e6cb;
+            border-radius: 8px;
+            line-height: 1.6;
+            font-size: 16px;
+            text-align: center;
+        }
+        .result-btn {
+            background-color: #ffc107;
+            color: #000;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 6px;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        .result-btn:hover {
+            background-color: #e0a800;
+        }
+        #resultContainer {
+            display: none;
+            margin-top: 25px;
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+        .ans-card {
+            background: #f8f9fa;
+            border-left: 5px solid #0056b3;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            text-align: left;
+        }
+        .ans-card.correct {
+            border-left-color: #28a745;
+        }
+        .ans-card.wrong {
+            border-left-color: #dc3545;
+        }
+        .promo-box {
+            background: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: left;
+            line-height: 1.6;
+        }
+        .promo-box a {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 13px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #0056b3;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
+
+<div class="container">
+    <header>
+        <h1>BENGAL EDUCATIONAL NEWS</h1>
+        <p>Librarian howar shopne, sothik prostutir songe.</p>
+        <div class="exam-date">📅 Exam Date: 08/11/2026</div><br>
+        <div class="contact-highlight">
+            📱 WhatsApp: <span>9932948196</span> &nbsp;|&nbsp; 📧 Email: <span>bengaleducationalnews@gmail.com</span>
+        </div>
+    </header>
+
+    <div class="nav-tabs">
+        <button class="nav-btn active" onclick="switchPortal(event, 'student')">Student Mock Test - 16</button>
+        <button class="nav-btn" onclick="switchPortal(event, 'admin')">Admin Panel (Password Protected)</button>
+    </div>
+
+    <!-- ================= STUDENT PORTAL ================= -->
+    <div id="studentPortal" class="portal-section active">
+        
+        <!-- Promotional box -->
+        <div class="promo-box">
+            <strong>🚀 Want to Continue Your Mock Tests?</strong><br><br>
+            Stay connected with our Exclusive Paid Group.<br><br>
+            By joining the Paid Group, you will get—<br>
+            ✅ Syllabus-based MCQs<br>
+            ✅ Study Notes & Detailed Notes<br>
+            ✅ Important Questions & Answers<br>
+            ✅ Regular Mock Tests<br><br>
+            📱 Contact: 9932948196<br><br>
+            👉 To join the Paid Group, click on the WhatsApp link below and send us a message:<br>
+            <a href="https://wa.me/919932948196?utm_source=chatgpt.com" target="_blank">💬 Join Paid Group via WhatsApp</a>
+        </div>
+
+        <form id="quizForm" action="https://formspree.io/f/moevdzqo" method="POST">
+            <input type="hidden" name="Student_Name" id="fsName">
+            <input type="hidden" name="Mobile_Number" id="fsMobile">
+            <input type="hidden" name="District" id="fsDistrict">
+            <input type="hidden" name="Attempted_Mock_Test" id="fsTestNo">
+            <input type="hidden" name="Correct_Answers" id="fsCorrect">
+            <input type="hidden" name="Wrong_Answers" id="fsWrong">
+            <input type="hidden" name="Total_Marks" id="fsMarks">
+
+            <div id="regBox" class="reg-card">
+                <h3 style="color: #0056b3; margin-top: 0;">Student Registration (Mock Test - 16)</h3>
+                <p style="font-size: 13px; color: #666;">Enter your details to start the exam.</p>
+                <div class="form-group">
+                    <label>Student Name</label>
+                    <input type="text" id="regName" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label>Mobile Number</label>
+                    <input type="tel" id="regMobile" placeholder="Enter your 10-digit mobile number" pattern="[0-9]{10}" required>
+                </div>
+                <div class="form-group">
+                    <label>District Name</label>
+                    <input type="text" id="regDistrict" placeholder="Enter your district name" required>
+                </div>
+                <div class="form-group">
+                    <label>Which Mock Test are you attempting?</label>
+                    <select id="regTestNo" required>
+                        <option value="Mock Test - 16" selected>Mock Test - 16</option>
+                    </select>
+                </div>
+                <button type="button" class="start-btn" onclick="startQuiz()">Start Mock Test - 16</button>
+            </div>
+        </form>
+
+        <div id="quizBox">
+            <div class="quiz-header">
+                <span id="qIndicator">Question: 1 / 30</span>
+                <span class="timer">Time Left: <span id="timeLeft">35</span>s</span>
+            </div>
+            <div class="question-title" id="questionText">Loading question...</div>
+            <ul class="options-list" id="optionsList"></ul>
+            <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next Question</button>
+        </div>
+
+        <div id="successMsg" class="msg-box">
+            <strong>Thank you! Your Mock Test - 16 has been successfully completed.</strong><br><br>
+            To view your score and answer sheet, please verify with your authorized Email ID and Password (from Mock Test 09).<br><br>
+            <div style="max-width: 350px; margin: auto; text-align: left;">
+                <div class="form-group">
+                    <label>Email ID (From Mock Test 09)</label>
+                    <input type="email" id="verifyEmail" placeholder="Enter your registered email">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="verifyPassword" placeholder="Enter your password">
+                </div>
+            </div>
+            <button class="result-btn" onclick="verifyAndShowResult()">📊 Verify & View Result</button>
+        </div>
+
+        <!-- Result & Detailed Answer Sheet Container -->
+        <div id="resultContainer"></div>
+    </div>
+
+    <!-- ================= ADMIN PORTAL ================= -->
+    <div id="adminPortal" class="portal-section">
+        <h3 style="color: #0056b3; margin-bottom: 15px;">Admin Dashboard (Mock Test - 16 Submissions)</h3>
+        <div style="overflow-x: auto;">
+            <table id="adminTable">
+                <thead>
+                    <tr>
+                        <th>SL No.</th>
+                        <th>Student Name</th>
+                        <th>Mobile Number</th>
+                        <th>District</th>
+                        <th>Test No</th>
+                        <th>Correct</th>
+                        <th>Wrong</th>
+                        <th>Total Marks (Out of 30)</th>
+                        <th>Status</th>
+                        <th>Exam Date</th>
+                    </tr>
+                </thead>
+                <tbody id="adminTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Populate Mock Test dropdown from 1 to 30 and ensure Mock Test - 16 is selected by default
+    const testSelect = document.getElementById('regTestNo');
+    testSelect.innerHTML = ''; 
+    
+    for (let i = 1; i <= 30; i++) {
+        let opt = document.createElement('option');
+        let testName = "Mock Test - " + (i < 10 ? "0" + i : i);
+        opt.value = testName;
+        opt.textContent = testName;
+        if (i === 16) {
+            opt.selected = true;
+        }
+        testSelect.appendChild(opt);
+    }
+    testSelect.value = "Mock Test - 16";
+
+    // Authorized Student Credentials from Mock Test 9
+    const authorizedStudents = [
+        { email: "rupammonal536@gmail.com", pass: "0592@" },
+        { email: "mrityunjoydhara@gmail.com", pass: "6294@" },
+        { email: "sudipmukherjee890@gmail.com", pass: "2017_" },
+        { email: "rupambakshi1986@gmail.com", pass: "1122+" },
+        { email: "mondaltagari582@gmail.com", pass: "8918@" },
+        { email: "debasisdas409@gmail.com", pass: "1996@" },
+        { email: "raghabkumarjld@gmail.com", pass: "2580@" },
+        { email: "mithunda@gmail.com", pass: "1986@" },
+        { email: "sultanacybercafe18@gmail.com", pass: "9775@" },
+        { email: "mahatomantu690@gmail.com", pass: "9547@" },
+        { email: "aqsabegam97@gmail.com", pass: "9775@" },
+        { email: "bdas73967@gmail.com", pass: "1984@" },
+        { email: "sarenpadmalochan1@gmail.com", pass: "7847@" },
+        { email: "saswatikundu14@gmail.com", pass: "1302@" },
+        { email: "royjhilikslg@gmail.com", pass: "1987&" },
+        { email: "prasantagjorai22@gmail.com", pass: "9064@" },
+        { email: "prasantaghorai22@gmail.com", pass: "9064@" },
+        { email: "dass39113@gmail.com", pass: "1994@" },
+        { email: "gazia2588@gmail.com", pass: "1998@" },
+        { email: "syedanargishkhatun@gmail.com", pass: "1993@" },
+        { email: "ankanmaity6@gmail.com", pass: "9635@" },
+        { email: "sayanibhattacharya261010@gmail.com", pass: "5872@" },
+        { email: "bidhanpramanik88@gmail.com", pass: "0991@" },
+        { email: "tinkudas.sp@gmail.com", pass: "1990@" },
+        { email: "rajibulrahaman4219@gmail.com", pass: "8509@" },
+        { email: "sudipmukherjee890@gmail.com", pass: "2017@" },
+        { email: "apurbamahato1863@gmail.com", pass: "3010@" },
+        { email: "mdbapimandal1997@gmail.com", pass: "1234@" },
+        { email: "rupammondal536@gmail.com", pass: "0592@" },
+        { email: "molaychatterjee3@gmail.com", pass: "2222@" },
+        { email: "sunnykantideb91@gmail.com", pass: "1987%" },
+        { email: "chandanmandalcvf@gmail.com", pass: "7421@" },
+        { email: "sampabiswas2b@gmail.com", pass: "1234@" },
+        { email: "rajkumardasppn@gmail.com", pass: "1984@" },
+        { email: "champakunti@gmail.com", pass: "1986@" },
+        { email: "uttamgiriegra@gmail.com", pass: "1234@" },
+        { email: "smritibiswasdas060@gmail.com", pass: "9851@" },
+        { email: "saharakhatun16@gmail.com", pass: "1995@" },
+        { email: "jatanch582@gmail.com", pass: "1212@" },
+        { email: "onlysumita12@gmail.com", pass: "1999@" },
+        { email: "pujakundu447@gmail.com", pass: "9083@" },
+        { email: "sanchitade111@gmail.com", pass: "2018@" },
+        { email: "samratbiswas027@gmail.com", pass: "2140#" },
+        { email: "gopi.sushanta@gmail.com", pass: "4674@" },
+        { email: "ayanbjee4@gmail.com", pass: "1997#" },
+        { email: "payelpal.sahapur@gmail.com", pass: "2002@" },
+        { email: "speak2manaly@gmail.com", pass: "1989@" },
+        { email: "dibyendu.bankura1993@gmail.com", pass: "9679@" },
+        { email: "rajmsd5206@gmail.com", pass: "5656@" },
+        { email: "mahatotapan04@gmail.com", pass: "2279#" },
+        { email: "riyadas11071994@gmail.com", pass: "1995@" },
+        { email: "jeetov2@gmail.com", pass: "1989@" },
+        { email: "saddamhossin.mld@gmail.com", pass: "1408@" },
+        { email: "ananya993232@gmail.com", pass: "2185#" },
+        { email: "kalamdastudu@gmail.com", pass: "5996@" },
+        { email: "ghoshsurajit96@rediffmail.com", pass: "1996@" },
+        { email: "biswajitmanna795@gmail.com", pass: "1995@" },
+        { email: "achintyakumarmaghidih@gmail.com", pass: "7232@" },
+        { email: "bubundas.ugb@gmail.com", pass: "2401@" },
+        { email: "samirsinghawb@gmail.com", pass: "1990@" },
+        { email: "sudipsaha.dhs7654@gmail.com", pass: "2509#" },
+        { email: "mousumisingha369@gmail.com", pass: "7003@" },
+        { email: "debasisdasmlis@gmail.com", pass: "1986@" },
+        { email: "test@gmail.com", pass: "8731@" }
+    ];
+
+    // Mock Test 16 Questions (30 Questions)
+    const questions = [
+        {
+            q: `1. ISBN এর পূর্ণরূপ কী?<br><span style="color:#0056b3; font-weight:normal;">What is the full form of ISBN?</span>`,
+            options: [
+                "a) International Standard Book Number",
+                "b) Indian Standard Book Number",
+                "c) Integrated Standard Bibliographic Number",
+                "d) International Standard Bibliographic Number"
+            ],
+            answer: 0
+        },
+        {
+            q: `2. গ্রন্থাগার ভবনের জন্য কোন ধরণের পরিকল্পনা সবচেয়ে গুরুত্বপূর্ণ?<br><span style="color:#0056b3; font-weight:normal;">Which type of planning is most important for a library building?</span>`,
+            options: [
+                "a) অর্থনৈতিক পরিকল্পনা",
+                "b) প্রযুক্তিগত পরিকল্পনা",
+                "c) স্থান পরিকল্পনা",
+                "d) আর্থিক পরিকল্পনা"
+            ],
+            answer: 2
+        },
+        {
+            q: `3. IFLA-এর পূর্ণরূপ কী?<br><span style="color:#0056b3; font-weight:normal;">What is the full form of IFLA?</span>`,
+            options: [
+                "a) Indian Federation of Library Associations",
+                "b) International Federation of Library Associations",
+                "c) International Federation of Librarians Association",
+                "d) International Forum of Library Activities"
+            ],
+            answer: 1
+        },
+        {
+            q: `4. প্রথম ই-লাইব্রেরি কোন দেশে চালু হয়েছিল?<br><span style="color:#0056b3; font-weight:normal;">In which country was the first e-library launched?</span>`,
+            options: [
+                "a) আমেরিকা",
+                "b) ইংল্যান্ড",
+                "c) ভারত",
+                "d) জার্মানি"
+            ],
+            answer: 0
+        },
+        {
+            q: `5. ‘ব্রাউন সিস্টেম’ কীসের সাথে সম্পর্কিত?<br><span style="color:#0056b3; font-weight:normal;">'Brown System' is related to what?</span>`,
+            options: [
+                "a) লাইব্রেরি ক্যাটাগরিং",
+                "b) বুক ইস্যু সিস্টেম",
+                "c) ক্লাসিফিকেশন সিস্টেম",
+                "d) রেফারেন্স সিস্টেম"
+            ],
+            answer: 1
+        },
+        {
+            q: `6. ভারতে গ্রন্থাগার নেটওয়ার্কের প্রথম প্রকল্পের নাম কী?<br><span style="color:#0056b3; font-weight:normal;">What is the name of the first library network project in India?</span>`,
+            options: [
+                "a) INFLIBNET",
+                "b) DELNET",
+                "c) CALIBNET",
+                "d) ERNET"
+            ],
+            answer: 2
+        },
+        {
+            q: `7. গ্রন্থাগার সংক্রান্ত সামাজিক কাজের প্রধান দৃষ্টিভঙ্গি কী?<br><span style="color:#0056b3; font-weight:normal;">What is the main perspective of social work related to libraries?</span>`,
+            options: [
+                "a) শিক্ষিত সমাজ গঠন",
+                "b) প্রযুক্তির ব্যবহার",
+                "c) অর্থনৈতিক উন্নতি",
+                "d) পাঠক বৃদ্ধি"
+            ],
+            answer: 0
+        },
+        {
+            q: `8. বিশেষ লাইব্রেরি সাধারণত কার জন্য কাজ করে?<br><span style="color:#0056b3; font-weight:normal;">Special libraries usually work for whom?</span>`,
+            options: [
+                "a) সাধারণ জনগণ",
+                "b) গবেষক এবং পেশাদার",
+                "c) ছাত্রছাত্রী",
+                "d) শিশু"
+            ],
+            answer: 1
+        },
+        {
+            q: `9. আধুনিক সমাজে গ্রন্থাগারের সবচেয়ে গুরুত্বপূর্ণ ভূমিকা কোনটি?<br><span style="color:#0056b3; font-weight:normal;">What is the most important role of a library in modern society?</span>`,
+            options: [
+                "a) বিনোদন",
+                "b) তথ্য সরবরাহ",
+                "c) অর্থনৈতিক উন্নয়ন",
+                "d) প্রাতিষ্ঠানিক গবেষণা"
+            ],
+            answer: 1
+        },
+        {
+            q: `10. গ্রন্থাগারের মাধ্যমে সামাজিক পরিবর্তন আনার জন্য কোনটি সবচেয়ে কার্যকর পদ্ধতি?<br><span style="color:#0056b3; font-weight:normal;">Which is the most effective method to bring about social change through libraries?</span>`,
+            options: [
+                "a) প্রযুক্তির ব্যবহারে জোর দেওয়া",
+                "b) বই পড়ার অভ্যাস প্রচার",
+                "c) গবেষণা উন্নয়ন করা",
+                "d) তথ্যের গোপনীয়তা রক্ষা"
+            ],
+            answer: 1
+        },
+        {
+            q: `11. ‘Resource Sharing’ লাইব্রেরি ব্যবস্থাপনার মধ্যে কী নির্দেশ করে?<br><span style="color:#0056b3; font-weight:normal;">What does 'Resource Sharing' indicate in library management?</span>`,
+            options: [
+                "A) লাইব্রেরির বই একে অপরের সাথে ভাগ করা",
+                "B) বই বিক্রি করা",
+                "C) পাঠক সেবা বৃদ্ধি করা",
+                "D) লাইব্রেরি ভবন নির্মাণ"
+            ],
+            answer: 0
+        },
+        {
+            q: `12. লাইব্রেরি সেবায় ‘Book Reservation’ কী?<br><span style="color:#0056b3; font-weight:normal;">What is 'Book Reservation' in library services?</span>`,
+            options: [
+                "A) বই ধার নেওয়া",
+                "B) বই পড়ার সুযোগ পাওয়া",
+                "C) বই পছন্দ করে রেখে দেওয়া",
+                "D) বই বিক্রি করা"
+            ],
+            answer: 2
+        },
+        {
+            q: `13. ‘Library Security’ ব্যবস্থাপনায় ‘RFID’ এর পূর্ণরূপ কী?<br><span style="color:#0056b3; font-weight:normal;">What is the full form of 'RFID' in library security management?</span>`,
+            options: [
+                "A) Radio Frequency Identification",
+                "B) Radio Frequency Integrated Detection",
+                "C) Rapid Frequency Identification",
+                "D) None of the above"
+            ],
+            answer: 0
+        },
+        {
+            q: `14. ‘Green Library’ এর উদ্দেশ্য কী?<br><span style="color:#0056b3; font-weight:normal;">What is the objective of a 'Green Library'?</span>`,
+            options: [
+                "A) পরিবেশবান্ধব লাইব্রেরি তৈরি",
+                "B) বই সবুজ রঙে মুদ্রণ",
+                "C) লাইব্রেরি ভবনের রঙ সবুজ করা",
+                "D) লাইব্রেরির জন্য পরিবেশগত নিয়ম তৈরি"
+            ],
+            answer: 0
+        },
+        {
+            q: `15. ‘Bibliography’ কী?<br><span style="color:#0056b3; font-weight:normal;">What is a 'Bibliography'?</span>`,
+            options: [
+                "A) বইয়ের বিশদ বর্ণনা",
+                "B) বইয়ের সংক্ষিপ্ত বিবরণ",
+                "C) বইয়ের তালিকা",
+                "D) বইয়ের তথ্য সংগ্রহ"
+            ],
+            answer: 2
+        },
+        {
+            q: `16. ‘Citation’ এর উদ্দেশ্য কী?<br><span style="color:#0056b3; font-weight:normal;">What is the purpose of 'Citation'?</span>`,
+            options: [
+                "A) বইয়ের পরিচয় প্রদান",
+                "B) বইয়ের মূল বিষয় বর্ণনা",
+                "C) বইয়ের সঠিক তথ্য প্রদান",
+                "D) বই বিক্রি"
+            ],
+            answer: 2
+        },
+        {
+            q: `17. লাইব্রেরি ব্যবস্থাপনায় ‘Digital Library’ কী?<br><span style="color:#0056b3; font-weight:normal;">What is a 'Digital Library' in library management?</span>`,
+            options: [
+                "A) একটি লাইব্রেরি যেখানে শুধুমাত্র ডিজিটাল বই রাখা হয়",
+                "B) একটি লাইব্রেরি যেখানে সমস্ত বই ডিজিটালভাবে সংরক্ষিত থাকে",
+                "C) একটি লাইব্রেরি যেখানে মুদ্রিত বই রাখা হয়",
+                "D) একটি লাইব্রেরি যেখানে শুধুমাত্র গবেষণা কাজ করা হয়"
+            ],
+            answer: 1
+        },
+        {
+            q: `18. লাইব্রেরির ‘Resource Center’ কী?<br><span style="color:#0056b3; font-weight:normal;">What is a library's 'Resource Center'?</span>`,
+            options: [
+                "A) বইয়ের সংগ্রহস্থল",
+                "B) পাঠকদের জন্য বিভিন্ন পরিষেবা প্রদানের কেন্দ্র",
+                "C) একধরনের বই বিক্রির স্থান",
+                "D) একটি ডিজিটাল সংরক্ষণাগার"
+            ],
+            answer: 1
+        },
+        {
+            q: `19. Ctrl + C কী কাজ করে?<br><span style="color:#0056b3; font-weight:normal;">What does Ctrl + C do?</span>`,
+            options: [
+                "(ক) ফাইল কপি করে",
+                "(খ) ফাইল প্রিন্ট করে",
+                "(গ) ফাইল সেভ করে",
+                "(ঘ) ফাইল খোলে"
+            ],
+            answer: 0
+        },
+        {
+            q: `20. কোন প্রোগ্রাম ব্যবহার করে ইমেজ এডিট করা যায়?<br><span style="color:#0056b3; font-weight:normal;">Which program can be used to edit images?</span>`,
+            options: [
+                "(ক) MS Word",
+                "(খ) Adobe Photoshop",
+                "(গ) MS Excel",
+                "(ঘ) MS PowerPoint"
+            ],
+            answer: 1
+        },
+        {
+            q: `21. RAM-এর পুরো নাম কী?<br><span style="color:#0056b3; font-weight:normal;">What is the full form of RAM?</span>`,
+            options: [
+                "(ক) Random Access Memory",
+                "(খ) Read Access Memory",
+                "(গ) Read And Modify",
+                "(ঘ) Random Allocation Memory"
+            ],
+            answer: 0
+        },
+        {
+            q: `22. কম্পিউটারের প্রধান ভাষা কোনটি?<br><span style="color:#0056b3; font-weight:normal;">Which is the primary language of a computer?</span>`,
+            options: [
+                "(ক) মেশিন ভাষা",
+                "(খ) C ভাষা",
+                "(গ) অ্যাসেম্বলি ভাষা",
+                "(ঘ) পাইথন ভাষা"
+            ],
+            answer: 0
+        },
+        {
+            q: `23. কোন ডিভাইসটি শুধুমাত্র আউটপুট প্রদান করে?<br><span style="color:#0056b3; font-weight:normal;">Which device provides output only?</span>`,
+            options: [
+                "(ক) মাউস",
+                "(খ) মনিটর",
+                "(গ) কী-বোর্ড",
+                "(ঘ) স্ক্যানার"
+            ],
+            answer: 1
+        },
+        {
+            q: `24. কোনটি ইন্টারনেটের সবচেয়ে বড় নেটওয়ার্ক?<br><span style="color:#0056b3; font-weight:normal;">Which is the largest network of the internet?</span>`,
+            options: [
+                "(ক) LAN",
+                "(খ) WAN",
+                "(গ) MAN",
+                "(ঘ) WLAN"
+            ],
+            answer: 1
+        },
+        {
+            q: `25. কোন ধরনের মেমোরি ডাটা সংরক্ষণ করতে পারে যখন কম্পিউটার বন্ধ থাকে?<br><span style="color:#0056b3; font-weight:normal;">Which type of memory can retain data when the computer is turned off?</span>`,
+            options: [
+                "(ক) RAM",
+                "(খ) হার্ড ডিস্ক",
+                "(গ) ক্যাশ মেমোরি",
+                "(ঘ) রেজিস্টার"
+            ],
+            answer: 1
+        },
+        {
+            q: `26. HTML-এর পূর্ণরূপ কী?<br><span style="color:#0056b3; font-weight:normal;">What is the full form of HTML?</span>`,
+            options: [
+                "(ক) Hypertext Makeup Language",
+                "(খ) Hypertext Markup Language",
+                "(গ) Hyperlink Markup Language",
+                "(ঘ) Hypertext Marking Language"
+            ],
+            answer: 1
+        },
+        {
+            q: `27. ইন্টারনেট থেকে ফাইল ডাউনলোড করার জন্য কোন প্রোটোকল ব্যবহার করা হয়?<br><span style="color:#0056b3; font-weight:normal;">Which protocol is used to download files from the internet?</span>`,
+            options: [
+                "(ক) HTTP",
+                "(খ) FTP",
+                "(গ) SMTP",
+                "(ঘ) POP"
+            ],
+            answer: 1
+        },
+        {
+            q: `28. কম্পিউটারের কী-বোর্ডটি কী ধরণের ডিভাইস?<br><span style="color:#0056b3; font-weight:normal;">What type of device is a computer keyboard?</span>`,
+            options: [
+                "(ক) ইনপুট",
+                "(খ) আউটপুট",
+                "(গ) স্টোরেজ",
+                "(ঘ) প্রসেসিং"
+            ],
+            answer: 0
+        },
+        {
+            q: `29. একটি ফোল্ডার সিলেক্ট করলে কোথায় যায়?<br><span style="color:#0056b3; font-weight:normal;">Where does a selected folder go?</span>`,
+            options: [
+                "(ক) হার্ড ড্রাইভ",
+                "(খ) র্যাসাইকেল বিন",
+                "(গ) ডেস্কটপ",
+                "(ঘ) সিপিইউ"
+            ],
+            answer: 1
+        },
+        {
+            q: `30. কোন অপারেটিং সিস্টেমটি মোবাইলের জন্য ডিজাইন করা হয়েছে?<br><span style="color:#0056b3; font-weight:normal;">Which operating system is designed for mobile phones?</span>`,
+            options: [
+                "(ক) Windows",
+                "(খ) Linux",
+                "(গ) Android",
+                "(ঘ) macOS"
+            ],
+            answer: 2
+        }
+    ];
+
+    let currentStudent = {};
+    let currentQIndex = 0;
+    let score = 0;
+    let wrongAnswers = 0;
+    let selectedOption = null;
+    let studentAnswers = [];
+    let timer;
+    let timeLeft = 35;
+    let submissions = JSON.parse(localStorage.getItem('mockSubmissions_test16')) || [];
+
+    function switchPortal(e, portal) {
+        if (portal === 'admin') {
+            let pass = prompt("Enter Admin Password:");
+            if (pass !== "ANI@2022") {
+                alert("Incorrect Password! Access Denied.");
+                return;
+            }
+            loadAdminTable();
+        }
+
+        document.querySelectorAll('.portal-section').forEach(sec => sec.classList.remove('active'));
+        document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+
+        if (portal === 'student') {
+            document.getElementById('studentPortal').classList.add('active');
+            e.target.classList.add('active');
+        } else {
+            document.getElementById('adminPortal').classList.add('active');
+            e.target.classList.add('active');
+        }
+    }
+
+    function startQuiz() {
+        const name = document.getElementById('regName').value.trim();
+        const mobile = document.getElementById('regMobile').value.trim();
+        const district = document.getElementById('regDistrict').value.trim();
+        const testNo = document.getElementById('regTestNo').value;
+
+        // Restriction for mobile number 8327325283
+        if (mobile === "8327325283") {
+            alert("Access Denied! This mobile number is restricted from taking Mock Test - 16.");
+            return;
+        }
+
+        if (!name || !mobile || !district || !testNo) {
+            alert("Please fill in all registration details!");
+            return;
+        }
+
+        currentStudent = { 
+            name, 
+            mobile, 
+            district, 
+            testNo,
+            correct: 0, 
+            wrong: 0, 
+            totalMarks: 0, 
+            date: "08/11/2026",
+            status: "In Progress"
+        };
+
+        submissions.push(currentStudent);
+        localStorage.setItem('mockSubmissions_test16', JSON.stringify(submissions));
+
+        currentQIndex = 0;
+        score = 0;
+        wrongAnswers = 0;
+        studentAnswers = [];
+
+        document.getElementById('regBox').style.display = 'none';
+        document.getElementById('quizBox').style.display = 'block';
+        loadQuestion();
+    }
+
+    function loadQuestion() {
+        clearInterval(timer);
+        timeLeft = 35;
+        document.getElementById('timeLeft').textContent = timeLeft;
+
+        if (currentQIndex >= questions.length) {
+            finishQuiz();
+            return;
+        }
+
+        document.getElementById('qIndicator').textContent = `Question: ${currentQIndex + 1} / ${questions.length}`;
+        const qObj = questions[currentQIndex];
+        document.getElementById('questionText').innerHTML = qObj.q;
+
+        const optionsList = document.getElementById('optionsList');
+        optionsList.innerHTML = '';
+        selectedOption = null;
+
+        qObj.options.forEach((opt, idx) => {
+            const li = document.createElement('li');
+            li.innerHTML = opt;
+            li.onclick = () => {
+                document.querySelectorAll('.options-list li').forEach(el => el.classList.remove('selected'));
+                li.classList.add('selected');
+                selectedOption = idx;
+            };
+            optionsList.appendChild(li);
+        });
+
+        timer = setInterval(() => {
+            timeLeft--;
+            document.getElementById('timeLeft').textContent = timeLeft;
+
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                autoNext();
+            }
+        }, 1000);
+    }
+
+    function autoNext() {
+        recordAnswer();
+        currentQIndex++;
+        loadQuestion();
+    }
+
+    function nextQuestion() {
+        clearInterval(timer);
+        recordAnswer();
+        currentQIndex++;
+        loadQuestion();
+    }
+
+    function recordAnswer() {
+        const correctAnsIdx = questions[currentQIndex].answer;
+        let chosen = selectedOption;
+        
+        studentAnswers.push({
+            q: questions[currentQIndex].q,
+            options: questions[currentQIndex].options,
+            chosen: chosen,
+            correct: correctAnsIdx
+        });
+
+        if (chosen === null || chosen !== correctAnsIdx) {
+            wrongAnswers++;
+        } else {
+            score++;
+        }
+        updateLiveScore();
+    }
+
+    function updateLiveScore() {
+        let sub = submissions.find(s => s.mobile === currentStudent.mobile);
+        if (sub) {
+            sub.correct = score;
+            sub.wrong = wrongAnswers;
+            sub.totalMarks = score;
+            localStorage.setItem('mockSubmissions_test16', JSON.stringify(submissions));
+        }
+    }
+
+    function finishQuiz() {
+        document.getElementById('quizBox').style.display = 'none';
+        document.getElementById('successMsg').style.display = 'block';
+
+        let sub = submissions.find(s => s.mobile === currentStudent.mobile);
+        if (sub) {
+            sub.status = "Completed";
+            sub.answersDetail = studentAnswers;
+            localStorage.setItem('mockSubmissions_test16', JSON.stringify(submissions));
+
+            document.getElementById('fsName').value = sub.name;
+            document.getElementById('fsMobile').value = sub.mobile;
+            document.getElementById('fsDistrict').value = sub.district;
+            document.getElementById('fsTestNo').value = sub.testNo;
+            document.getElementById('fsCorrect').value = sub.correct;
+            document.getElementById('fsWrong').value = sub.wrong;
+            document.getElementById('fsMarks').value = sub.totalMarks;
+
+            fetch(document.getElementById('quizForm').action, {
+                method: 'POST',
+                body: new FormData(document.getElementById('quizForm')),
+                headers: { 'Accept': 'json' }
+            }).catch(err => console.log('Formspree sync error:', err));
+        }
+    }
+
+    function verifyAndShowResult() {
+        const vEmail = document.getElementById('verifyEmail').value.trim().toLowerCase();
+        const vPass = document.getElementById('verifyPassword').value.trim();
+
+        if (!vEmail || !vPass) {
+            alert("Please enter your registered Email ID and Password to view the result!");
+            return;
+        }
+
+        let isValid = authorizedStudents.find(s => s.email === vEmail && s.pass === vPass);
+        if (!isValid) {
+            alert("Incorrect Email ID or Password! Result access denied.");
+            return;
+        }
+
+        const msgBox = document.getElementById('successMsg');
+        const resContainer = document.getElementById('resultContainer');
+        msgBox.style.display = 'none';
+        resContainer.style.display = 'block';
+
+        let sub = submissions.find(s => s.mobile === currentStudent.mobile) || currentStudent;
+        
+        let html = `<h2 style="color: #0056b3; text-align: center;">Performance & Answer Sheet</h2>`;
+        html += `<div style="background: #e9ecef; padding: 15px; border-radius: 6px; margin-bottom: 20px; font-size: 15px;">
+            👤 <b>Name:</b> ${sub.name} | 📧 <b>Email:</b> ${vEmail} | 📱 <b>Mobile:</b> ${sub.mobile} | 📍 <b>District:</b> ${sub.district} | 📝 <b>Test:</b> ${sub.testNo}<br>
+            ✅ <b>Correct Answers:</b> <span style="color:green; font-weight:bold;">${sub.correct}</span> | 
+            ❌ <b>Wrong Answers:</b> <span style="color:red; font-weight:bold;">${sub.wrong}</span> | 
+            🏆 <b>Total Marks:</b> <span style="color:#0056b3; font-weight:bold;">${sub.totalMarks} / 30</span>
+        </div>`;
+
+        sub.answersDetail.forEach((item, index) => {
+            let isCorrect = item.chosen === item.correct;
+            let cardClass = isCorrect ? 'correct' : 'wrong';
+            
+            html += `<div class="ans-card ${cardClass}">
+                <strong>Q${index + 1}: ${item.q}</strong><br><ul style="list-style-type:none; padding:0; margin:8px 0;">`;
+            
+            item.options.forEach((opt, oIdx) => {
+                let badge = "";
+                if (oIdx === item.correct) {
+                    badge = " <span style='color:green; font-weight:bold;'>✔ (Correct Answer)</span>";
+                }
+                if (oIdx === item.chosen && oIdx !== item.correct) {
+                    badge = " <span style='color:red; font-weight:bold;'>❌ (Your Answer)</span>";
+                } else if (oIdx === item.chosen && oIdx === item.correct) {
+                    badge = " <span style='color:green; font-weight:bold;'>✔ (Your Answer)</span>";
+                }
+                html += `<li style="padding: 3px 0;">• ${opt} ${badge}</li>`;
+            });
+
+            html += `</ul></div>`;
+        });
+
+        // Promotional box
+        html += `<div class="promo-box" style="margin-top: 25px;">
+            <strong>🚀 Want to Continue Your Mock Tests?</strong><br><br>
+            Stay connected with our Exclusive Paid Group.<br><br>
+            By joining the Paid Group, you will get—<br>
+            ✅ Syllabus-based MCQs<br>
+            ✅ Study Notes & Detailed Notes<br>
+            ✅ Important Questions & Answers<br>
+            ✅ Regular Mock Tests<br><br>
+            📱 Contact: 9932948196<br><br>
+            👉 To join the Paid Group, click on the WhatsApp link below and send us a message:<br>
+            <a href="https://wa.me/919932948196?utm_source=chatgpt.com" target="_blank">💬 Join Paid Group via WhatsApp</a>
+        </div>`;
+
+        html += `<div style="text-align: center; margin-top: 25px; font-weight: bold; color: #0056b3; font-size: 16px;">
+            BENGAL EDUCATIONAL NEWS<br>
+            <span style="font-size: 13px; color: #555;">Librarian howar shopne, sothik prostutir songe.</span>
+        </div>`;
+
+        resContainer.innerHTML = html;
+    }
+
+    function loadAdminTable() {
+        const tbody = document.getElementById('adminTableBody');
+        tbody.innerHTML = '';
+
+        if (submissions.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="10" style="text-align:center; color:#777;">No student records found.</td></tr>`;
+            return;
+        }
+
+        submissions.forEach((sub, index) => {
+            let statusBadge = sub.status === 'Completed'
+                ? `<span style="background: #28a745; color: white; padding: 3px 8px; border-radius: 3px; font-size: 11px;">Completed</span>`
+                : `<span style="background: #ffc107; color: black; padding: 3px 8px; border-radius: 3px; font-size: 11px;">In Progress</span>`;
+
+            const row = `<tr>
+                <td>${index + 1}</td>
+                <td><b>${sub.name}</b></td>
+                <td>${sub.mobile}</td>
+                <td>${sub.district}</td>
+                <td>${sub.testNo}</td>
+                <td style="color: green; font-weight: bold;">${sub.correct}</td>
+                <td style="color: red; font-weight: bold;">${sub.wrong}</td>
+                <td style="font-weight: bold; color: #0056b3;">${sub.totalMarks} / 30</td>
+                <td>${statusBadge}</td>
+                <td>${sub.date}</td>
+            </tr>`;
+            tbody.innerHTML += row;
+        });
+    }
+</script>
+
+</body>
+</html>
